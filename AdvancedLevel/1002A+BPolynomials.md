@@ -1,4 +1,4 @@
-# A+B for polynomials
+# A+B for Polynomials
 
 This time, you are supposed to find *A*+*B* where *A* and *B* are two polynomials.
 
