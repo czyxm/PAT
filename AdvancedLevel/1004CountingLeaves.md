@@ -90,6 +90,8 @@ int main()
             leafNum = newNum = 0;
         }
     }
+    delete [] nodeData;
+    return 0;
 }
 
 int** readData()
