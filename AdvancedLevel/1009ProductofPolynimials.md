@@ -4,10 +4,9 @@ This time, you are supposed to find A¡ÁB where A and B are two polynomials.
 ### Input Specification:
 Each input file contains one test case. Each case occupies 2 lines, and each line contains the information of a polynomial:
 
-$K N_1 a_{N1} N_2 a?_{N2} ... N?_K a_{NK}$
-?? 
+$K N_1 a_{N1} N_2 a_{N2} ... N_K a_{NK}$
 
-??where K is the number of nonzero terms in the polynomial, $N_i$ and $a_{?N?i}$ (i=1,2,?,K) are the exponents and coefficients, respectively. It is given that $1¡ÜK¡Ü10, 0¡ÜN_K<?<N_2<N_1¡Ü1000$.
+??where K is the number of nonzero terms in the polynomial, $N_i$ and $a_{Ni}$ (i=1,2,...,K) are the exponents and coefficients, respectively. It is given that $1 \leq K¡\leq 10, 0 <N_K<...<N_2<N_1\leq1000$.
 
 ### Output Specification:
 For each test case you should output the product of A and B in one line, with the same format as the input. Notice that there must be NO extra space at the end of each line. Please be accurate up to 1 decimal place.
