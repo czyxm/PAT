@@ -39,6 +39,7 @@ To make value1 equals value2, the first step is to caculate value1 in the known 
 * The minmum and maximum value of unknown radix are the maximum digit **plus 1** in strN2 and the value **plus 1** of strN1 respectively
 * Binary search is used to reduce the search time avoiding time out error
 
+emmm...Actually there are **20** test points, how horrible T^T
 
 ```C++
 #include<iostream>
