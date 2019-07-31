@@ -10,7 +10,7 @@ For example, suppose that a bank has 2 windows and each window may have 2 custme
 At 08:01, customer1 is done and customer5 enters the line in front of window 1 since that line seems shorter now. Customer2 will leave at 08:02, customer4 at 08:06, customer3 at 08:07, and finally customer5 at 08:10.
 
 ### Input Specification:
-Each input file contains one test case. Each case starts with a line containing 4 positive integers: N (¡Ü20, number of windows), M (¡Ü10, the maximum capacity of each line inside the yellow line), K (¡Ü1000, number of customers), and Q (¡Ü1000, number of customer queries).
+Each input file contains one test case. Each case starts with a line containing 4 positive integers: N (<=20, number of windows), M (<=10, the maximum capacity of each line inside the yellow line), K (<=1000, number of customers), and Q (<=1000, number of customer queries).
 
 The next line contains K positive integers, which are the processing time of the K customers.
 
@@ -39,6 +39,7 @@ Sorry
 This problem simulates the queuing situation at the bank window, and the customers are divided into 2 parts:
 * Within the yellow line[0, N*M-1]: Just line up one by one.
 * Behind the yellow line[N*M, K-1]: Each time pop the customer that finishes the service earlist and push the next customer in.
+
 What calls for our attention is that "for those customers who cannot be **served** before 17:00, you must output Sorry instead", note that the word in bold type is not 'finish'!!! Actually I waste lots of time here because of carelessness :(.
 
 ```C++
