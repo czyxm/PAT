@@ -54,7 +54,7 @@ This problem is logically simple: Set up a map from customers' names to its stru
 
 The reason I use 'map' is that it's easy to determine whether the next customer has appeared by function 'find()'.
 First group all the records with the same name and then sort them by generic algorithm chronologically so as to abstract valid calls. 
-Secondly, we need to make sure that the cost is right. While displaying the result, note that the customer who has no valid calls will not be displayed...This trap made me nearly mad :)
+Secondly, we need to make sure that the cost is right. While displaying the result, note that the customer who has no valid call will not be displayed...This trap made me nearly mad :)
 
 ```C++
 #include<iostream>
