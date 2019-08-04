@@ -31,7 +31,19 @@ For each test case, print the cheapest price in a line, accurate up to 2 decimal
 The maximum travel distance = 1200.00
 ```
 ### Solution
-23...Failed to pass test point 2. How ****!
+Greedy algorithm: Sort all the station by their distance first, for current position we can find the stations that it can reach to:
+* if there's a station with cheaper price then go to there.
+* if no cheaper station
+  * if the terminal station is within reach then go to the terminal station directly.
+  * if not, find the cheapest station amoung them, then fill up the car with gas to go there.
+  * if not, it must impossible to reach the terminal station, just caculate the distance and print it.
+
+Special case:
+* If the nearest station's distance is bigger than 0, then the car cannot depart, distance = "0.00"
+* If the terminal station is the start station, then the cost = "0.00"
+
+Finally, take care of the output format. Good luck!
+  
 ```C++
 #include<iostream>
 #include<iomanip>
@@ -66,16 +78,16 @@ int main()
         }
     }
     sort(station.begin(), station.end(), compare);
-    // if (maxDistance == 0)
-    // {
-    //     cout << "0.00";
-    //     return 0;
-    // }
-    // if (station.front()->distance > 0)
-    // {
-    //     cout << "The maximum travel distance = " << setprecision(2) << fixed << 0;
-    //     return 0;
-    // }
+    if (maxDistance == 0)
+    {
+        cout << "0.00";
+        return 0;
+    }
+    if (station.front()->distance > 0)
+    {
+        cout << "The maximum travel distance = 0.00";
+        return 0;
+    }
     cost = distance = leftGas = 0;
     int i = 0, nextCheaperStation, cheapestStation;
     while (true)

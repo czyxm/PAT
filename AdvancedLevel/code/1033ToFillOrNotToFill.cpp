@@ -31,16 +31,16 @@ int main()
         }
     }
     sort(station.begin(), station.end(), compare);
-    // if (maxDistance == 0)
-    // {
-    //     cout << "0.00";
-    //     return 0;
-    // }
-    // if (station.front()->distance > 0)
-    // {
-    //     cout << "The maximum travel distance = " << setprecision(2) << fixed << 0;
-    //     return 0;
-    // }
+    if (maxDistance == 0)
+    {
+        cout << "0.00";
+        return 0;
+    }
+    if (station.front()->distance > 0)
+    {
+        cout << "The maximum travel distance = 0.00";
+        return 0;
+    }
     cost = distance = leftGas = 0;
     int i = 0, nextCheaperStation, cheapestStation;
     while (true)
