@@ -27,7 +27,7 @@ For each test case, output two numbers, one in each line. The first number is th
 ### Solution
 Oh hu~
 ```C++
-#include<iostream>
+#include<iostream> 
 #include<string>
 using namespace std;
 
