@@ -49,7 +49,7 @@ None
 ```
 ### Solution
 There's allways a point resulting in TLE while searching orderly.
-I referenced the idea on how to shrink the search scope from [º«“‰–«ø’](https://blog.csdn.net/u012303532/article/details/12623007).
+I referenced the idea on how to shrink the search scope from <https://blog.csdn.net/u012303532/article/details/12623007>.
 ```C++
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
