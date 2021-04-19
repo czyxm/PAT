@@ -1,51 +1,37 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> 
 using namespace std;
 
-int N;
-vector<int> _heap, path;
+int n;
+vector<int> key;
+vector<int> path;
 
 void print()
 {
-    for (int & i : path)
+    for (int i = 0;  i < path.size(); i++)
     {
-        cout << i;
-        if (i != path.back())
+        if (i > 0)
         {
             cout << " ";
         }
+        cout << path[i];
     }
     cout << endl;
 }
 
-bool check(int index, bool type)
+bool traverse(int index, bool type)
 {
-    int left = (index << 1) + 1;
     bool res = true;
-    path.push_back(_heap[index]);
-    if (left + 1 < N)
+    path.push_back(key[index]);
+    int right = (index << 1) + 2;
+    if (right < key.size())
     {
-        res &= check(left + 1, type);
-        res &= check(left, type);
-        if (type && (_heap[index] < _heap[left] || _heap[index] < _heap[left + 1]))
-        {
-            res = false;
-        }
-        else if (!type && (_heap[index] > _heap[left] || _heap[index] > _heap[left + 1]))
-        {
-            res = false;
-        }
+        res = type ? (key[index] > key[right] & key[index] > key[right - 1]) : (key[index] < key[right] & key[index] < key[right - 1]);
+        res &= traverse(right, type) & traverse(right - 1, type);
     }
-    else if (left + 1 == N)
+    else if (right == key.size())
     {
-        res &= check(left, type);
-        if (type && _heap[index] < _heap[left])
-        {
-            res = false;
-        }
-        else if (!type && _heap[index] > _heap[left])
-        {
-            res = false;
-        }
+        res = type ? (key[index] > key[right - 1]) : (key[index] < key[right - 1]);
+        res &= traverse(right - 1, type);
     }
     else
     {
@@ -57,50 +43,24 @@ bool check(int index, bool type)
 
 int main()
 {
-    int minIndex = 0, maxIndex = 0;
-    bool flag = true;
-    cin >> N;
-    _heap.resize(N);
-    for (int i = 0; i < N; i++)
+#ifndef ONLINE_JUDGE
+    freopen("1.txt", "r", stdin);
+#endif
+    cin >> n;
+    key.resize(n);
+    for (int i = 0; i < n; i++)
     {
-        cin >> _heap[i];
-        if (_heap[i] > _heap[maxIndex])
-        {
-            maxIndex = i;
-        }
-        if (_heap[i] < minIndex)
-        {
-            minIndex = i;
-        }
+        cin >> key[i];
     }
-    if (maxIndex == 0)
+    if (key[0] > key[1] && traverse(0, true))
     {
-        if (check(0, true))
-        {
-            cout << "Max Heap" << endl;
-        }
-        else
-        {
-            flag = false;
-        }
+        cout << "Max Heap" << endl;
     }
-    else if (minIndex == 0)
+    else if (key[0] < key[1] && traverse(0, false))
     {
-        if (check(0, false))
-        {
-            cout << "Min Heap" << endl;
-        }
-        else
-        {
-            flag = false;
-        }
+        cout << "Min Heap" << endl;
     }
     else
-    {
-        check(0, true);
-        flag = false;
-    }
-    if (!flag)
     {
         cout << "Not Heap" << endl;
     }

@@ -1,39 +1,47 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> 
 using namespace std;
-
-vector<int> adjacent[10000];
 
 int main()
 {
-    int Nv, Ne, K, u, v;
-    cin >> Nv >> Ne;
-    for (int i = 1; i <= Ne; i++)
+#ifndef ONLINE_JUDGE
+    freopen("1.txt", "r", stdin);
+#endif
+    int M, N, K, u, v;
+    vector< vector<int> > adjacentList;
+    vector<int> colors;
+    set<int> colorSet;
+    cin >> N >> M;
+    adjacentList.resize(N);
+    colors.resize(N);
+    for (int i = 1; i <= M; i++)
     {
         cin >> u >> v;
-        adjacent[u].push_back(v);
-        adjacent[v].push_back(u);
+        adjacentList[u].push_back(v);
     }
     cin >> K;
     for (int i = 1; i <= K; i++)
     {
-        vector<int> vertexColor(Nv, -1);
-        set<int> res;
-        bool flag = true;
-        for (u = 0; u < Nv; u++)
+        colorSet.clear();
+        for (auto & color : colors)
         {
-            cin >> vertexColor[u];
-            for (int w : adjacent[u])
+            cin >> color;
+            colorSet.insert(color);
+        }
+        bool flag = true;
+        for (u = 0; u < N; u++)
+        {
+            for (auto v : adjacentList[u])
             {
-                if (vertexColor[u] == vertexColor[w])
+                if (colors[u] == colors[v])
                 {
                     flag = false;
+                    break;
                 }
             }
-            res.insert(vertexColor[u]);
         }
         if (flag)
         {
-            cout << res.size() << "-coloring" << endl;
+            cout << colorSet.size() << "-coloring" << endl;
         }
         else
         {
